@@ -1,0 +1,14 @@
+AcceptEnv LANG LC_*
+
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+PubkeyAuthentication yes
+
+ChallengeResponseAuthentication no
+KbdInteractiveAuthentication no
+PasswordAuthentication no
+PermitRootLogin no
+PrintMotd no
+UsePAM no

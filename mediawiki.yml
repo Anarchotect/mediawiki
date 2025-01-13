@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  mediawiki:
+    container_name: mediawiki
+    image: anarchotect/mediawiki-pgsql
+    restart: always
+    environment:
+      SSH_PASSWORD: YourSecureSSHPassword
+    ports:
+      - 192.168.1.1:443:443
+      - 192.168.1.1:80:80
+      - 192.168.1.1:222:22
+    volumes:
+      - /srv/mediawiki/ssh/:/home/tunnel/.ssh/
+      # Uncomment this line after the install
+      #- /srv/mediawiki/LocalSettings.php:/var/www/html/LocalSettings.php
+
+  mediawikidb:
+    container_name: mediawikidb
+    image: postgres:15.10-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: YourSecurePostgresPassword
+    volumes:
+      - /srv/mediawiki/db/:/var/lib/postgresql/data/

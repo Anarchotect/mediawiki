@@ -1,0 +1,10 @@
+#!/bin/bash
+
+[[ -e /home/tunnel/.ssh/authorized_keys ]] || {
+	ssh-keygen -C tunnel -t ed25519 -a 100 -N "${SSH_PASSWORD}" -f /home/tunnel/.ssh/mediawiki_ed25519
+	mv /home/tunnel/.ssh/mediawiki_ed25519.pub /home/tunnel/.ssh/authorized_keys
+}
+
+service ssh start
+/etc/init.d/apache2 start
+sleep infinity
