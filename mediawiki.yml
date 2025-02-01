@@ -16,8 +16,8 @@ services:
       # Uncomment this line after the install
       #- /srv/mediawiki/LocalSettings.php:/var/www/html/LocalSettings.php
 
-  mediawikidb:
-    container_name: mediawikidb
+  mediawikipsql:
+    container_name: mediawikipsql
     image: postgres:15.10-alpine
     restart: always
     environment:
